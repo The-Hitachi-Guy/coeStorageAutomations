@@ -12,6 +12,13 @@
         validate_certs: false
       delegate_to: localhost
       register: cluster_info
+    - debug:
+        var: cluster_info
+
+    - name: "Set cluster_info for workflow"
+      set_stats:
+        data:
+          cluster_info: "{{ cluster_info }}"
 #
 #    - name: Mount VMFS datastores to ESXi
 #      community.vmware.vmware_host_datastore:
