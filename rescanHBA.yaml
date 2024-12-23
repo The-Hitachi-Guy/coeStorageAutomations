@@ -10,4 +10,6 @@
         username: '{{ vcenter_username }}'
         password: '{{ vcenter_password }}'
         refresh_storage: true
+        validate_certs: false
+        cluster_name: '{{ vcenter_cluster_name }}'
     delegate_to: localhost
