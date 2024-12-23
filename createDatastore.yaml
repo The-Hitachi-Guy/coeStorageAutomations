@@ -19,6 +19,15 @@
       set_stats:
         data:
           cluster_info: "{{ cluster_info }}"
+
+    - name: "First Host variable"
+      set_stats:
+        data:
+          first_host: '{{ cluster_info.clusters.{{vcenter_cluster_name}}.hosts.0.name }}'
+
+    - debug:
+        var: first_host
+
 #
 #    - name: Mount VMFS datastores to ESXi
 #      community.vmware.vmware_host_datastore:
@@ -29,7 +38,7 @@
 #        datastore_type: '{{ vcenter_datastore_type }}'
 #        vmfs_device_name: '{{vcenter_datastore_naa}}'
 #        vmfs_version: 6
-#        esxi_hostname: '{{ inventory_hostname }}'
+#        esxi_hostname: '{{ cluster_info.clusters.{{vcenter_cluster_name}}.hosts.0.name }}'
 #        validate_certs: false
 #        state: present
 #      delegate_to: localhost
