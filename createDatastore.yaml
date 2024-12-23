@@ -24,6 +24,10 @@
       set_fact:
         first_host: cluster_info['clusters']['{{vcenter_cluster_name}}']['hosts'][0]['name']
 
+    - name: "Set first host variable"
+      set_stats:
+        data:
+          first_host: "{{ first_host }}"
 
     - debug:
         var: "{{first_host}}"
@@ -36,7 +40,7 @@
         password: '{{ vcenter_password }}'
         datastore_name: '{{ vcenter_datastore_name }}'
         datastore_type: 'vmfs'
-        vmfs_device_name: '{{vcenter_datastore_naa}}'
+        vmfs_device_name: '{{{{vcenter_datastore_naa}}}}'
         vmfs_version: 6
         esxi_hostname: '{{first_host}}'
         validate_certs: false
