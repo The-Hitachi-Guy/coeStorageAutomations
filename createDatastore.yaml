@@ -26,7 +26,7 @@
 
     - name: "first_host variable"
       set_fact:
-        first_esxi_host: {{first_host}}
+        first_esxi_host: '{{first_host | from_yaml}}'
 
 
     - debug:
