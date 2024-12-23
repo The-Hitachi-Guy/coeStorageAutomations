@@ -23,7 +23,7 @@
     - name: "first_host variable"
       set_stats:
         data:
-          first_host: cluster_info['clusters']["{{vcenter_cluster_name}}"]['hosts'][0]['name']
+          first_host: cluster_info['clusters']['{{vcenter_cluster_name}}']['hosts'][0]['name']
 
 
     - debug:
