@@ -20,10 +20,20 @@
         data:
           cluster_info: "{{ cluster_info }}"
 
-    - name: "First Host variable"
+    - name: "Clusters variable"
       set_stats:
         data:
-          first_host: cluster_info['clusters']['{{vcenter_cluster_name}}']['hosts'][0]['name']
+          vcenter_clusters: cluster_info['clusters']
+
+    - name: "TE cluster variable"
+      set_stats:
+        data:
+          selected_cluster: vcenter_clusters['{{vcenter_cluster_name}}']
+
+    - name: "Host variable"
+      set_stats:
+        data:
+          first_host: selected_cluster.hosts.0.name
 
     - debug:
         var: first_host
