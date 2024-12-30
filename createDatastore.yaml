@@ -38,21 +38,15 @@
         msg: "{{ first_host }}"
 
 
-          #    - debug:
-          #        msg: "{ { vars[ first_esxi_host ] } }"
-
-          #
-          #
-          #    - name: Mount VMFS datastores to ESXi
-          #      community.vmware.vmware_host_datastore:
-          #        hostname: '{{ vcenter_hostname }}'
-          #        username: '{{ vcenter_username }}'
-          #        password: '{{ vcenter_password }}'
-          #        datastore_name: '{{ vcenter_datastore_name }}'
-          #        datastore_type: 'vmfs'
-          #        vmfs_device_name: '{{vcenter_datastore_naa}}'
-          #        vmfs_version: 6
-          #        esxi_hostname: '{{ first_esxi_host }}'
-          #        validate_certs: false
-        #        state: present
-        #      delegate_to: localhost
+    - name: Mount VMFS datastores to ESXi
+      community.vmware.vmware_host_datastore:
+        hostname: '{{ vcenter_hostname }}'
+        username: '{{ vcenter_username }}'
+        password: '{{ vcenter_password }}'
+        datastore_name: '{{ vcenter_datastore_name }}'
+        datastore_type: 'vmfs'
+        vmfs_device_name: '{{vcenter_datastore_naa}}'
+        vmfs_version: 6
+        esxi_hostname: '{{ first_esxi_host }}'
+        validate_certs: false
+      state: present
