@@ -24,7 +24,12 @@
       set_fact:
         first_host: cluster_info['json']['clusters']['{{vcenter_cluster_name}}']['hosts'][0]['name']
 
-
+    - name: Debug Auto tags
+      debug:
+        msg: "{{ item['hosts'][0]['name'] }}"
+      loop: "{{ cluster_info['json']['clusters'] }}"
+      when: item.name == "{{vcenter_cluster_name}}"
+      register: tagExists
 
 
     - debug:
