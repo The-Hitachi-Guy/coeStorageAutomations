@@ -38,7 +38,7 @@
 #        msg: "{{ vars[first_esxi_host] }}"
 
     - debug:
-        msg: "{{ lookup('vars', first_esxi_host) }}"
+        msg: "{{ lookup('vars', 'cluster_info.'+first_esxi_host) }}"
 #
 #
 #    - name: Mount VMFS datastores to ESXi
