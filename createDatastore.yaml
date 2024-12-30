@@ -29,8 +29,13 @@
         first_esxi_host: '{{first_host | from_yaml}}'
 
 
+
+
     - debug:
         var: "{{ first_esxi_host }}"
+
+    - debug: msg={{ vars[first_esxi_host] }}"
+    - debug: msg={{ lookup('vars', first_esxi_host) }}"
 #
 #
 #    - name: Mount VMFS datastores to ESXi
