@@ -24,33 +24,33 @@
       set_fact:
         first_host: cluster_info['clusters']['{{vcenter_cluster_name}}']['hosts'][0]['name']
 
-    - name: "first_host variable"
+    - name: "second_host variable"
       set_fact:
-        first_esxi_host: '{{first_host | from_yaml}}'
+        second_host: {{ "cluster_info['clusters']['"+ vcenter_cluster_name +"']['hosts'][ 0 ]['name']" }}
+
 
 
 
 
     - debug:
-        var: "{{ first_esxi_host }}"
-
+        var: "{ { first_host } }"
+    - debug:
+        var: "{ { second_host } }"
 #    - debug:
-#        msg: "{{ vars[first_esxi_host] }}"
+#        msg: "{ { vars[ first_esxi_host ] } }"
 
-    - debug:
-        msg: "{{ lookup('vars', 'cluster_info.'+first_esxi_host) }}"
-#
-#
-#    - name: Mount VMFS datastores to ESXi
-#      community.vmware.vmware_host_datastore:
-#        hostname: '{{ vcenter_hostname }}'
-#        username: '{{ vcenter_username }}'
-#        password: '{{ vcenter_password }}'
-#        datastore_name: '{{ vcenter_datastore_name }}'
-#        datastore_type: 'vmfs'
-#        vmfs_device_name: '{{vcenter_datastore_naa}}'
-#        vmfs_version: 6
-#        esxi_hostname: '{{ first_esxi_host }}'
-#        validate_certs: false
-#        state: present
-#      delegate_to: localhost
+          #
+          #
+          #    - name: Mount VMFS datastores to ESXi
+          #      community.vmware.vmware_host_datastore:
+          #        hostname: '{{ vcenter_hostname }}'
+          #        username: '{{ vcenter_username }}'
+          #        password: '{{ vcenter_password }}'
+          #        datastore_name: '{{ vcenter_datastore_name }}'
+          #        datastore_type: 'vmfs'
+          #        vmfs_device_name: '{{vcenter_datastore_naa}}'
+          #        vmfs_version: 6
+          #        esxi_hostname: '{{ first_esxi_host }}'
+          #        validate_certs: false
+          #        state: present
+        #      delegate_to: localhost
