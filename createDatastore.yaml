@@ -34,8 +34,8 @@
     - debug:
         var: "{{ first_esxi_host }}"
 
-    - debug:
-        msg: "{{ vars[first_esxi_host] }}"
+#    - debug:
+#        msg: "{{ vars[first_esxi_host] }}"
 
     - debug:
         msg: "{{ lookup('vars', first_esxi_host) }}"
