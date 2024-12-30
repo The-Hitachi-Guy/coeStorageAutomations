@@ -27,7 +27,7 @@
     - name: Debug Auto tags
       debug:
         msg: "{{ item['hosts'][0]['name'] }}"
-      loop: "{{ cluster_info['clusters'] }}"
+      loop: "{{ cluster_info['clusters'][vcenter_cluster_name] }}"
       when: item.name == "{{vcenter_cluster_name}}"
       register: tagExists
 
