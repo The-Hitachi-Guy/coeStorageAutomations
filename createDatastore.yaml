@@ -24,19 +24,22 @@
       set_fact:
         first_host: "{{cluster_info['clusters'][vcenter_cluster_name]['hosts'][0]['name']}}"
 
-#    - name: Debug Auto tags
-#      debug:
-#        msg: "{{ item['name'] }}"
-#      loop: "{{ cluster_info['clusters'][vcenter_cluster_name]['hosts'] }}"
-#      when: item.name == "{{vcenter_cluster_name}}"
-#      register: tagExists
+    #    - name: Debug Auto tags
+    #      debug:
+    #        msg: "{{ item['name'] }}"
+    #      loop: "{{ cluster_info['clusters'][vcenter_cluster_name]['hosts'] }}"
+    #      when: item.name == "{{vcenter_cluster_name}}"
+    #      register: tagExists
 
 
     - debug:
         var: "{{ first_host }}"
+    - debug:
+        msg: "{{ first_host }}"
 
-#    - debug:
-#        msg: "{ { vars[ first_esxi_host ] } }"
+
+          #    - debug:
+          #        msg: "{ { vars[ first_esxi_host ] } }"
 
           #
           #
@@ -51,5 +54,5 @@
           #        vmfs_version: 6
           #        esxi_hostname: '{{ first_esxi_host }}'
           #        validate_certs: false
-          #        state: present
+        #        state: present
         #      delegate_to: localhost
