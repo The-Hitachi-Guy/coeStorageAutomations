@@ -46,6 +46,8 @@
         datastore_type: 'vmfs'
         vmfs_device_name: '{{vcenter_datastore_naa}}'
         vmfs_version: 6
-        esxi_hostname: '{{ first_esxi_host }}'
+        esxi_hostname: '{{ item.name }}'
         validate_certs: false
         state: present
+      loop: "{{cluster_info['clusters'][vcenter_cluster_name]['hosts']}}"
+
