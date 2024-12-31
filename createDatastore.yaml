@@ -20,23 +20,6 @@
         data:
           cluster_info: "{{ cluster_info }}"
 
-    - name: "first_host variable"
-      set_fact:
-        first_host: "{{cluster_info['clusters'][vcenter_cluster_name]['hosts'][0]['name']}}"
-
-    #    - name: Debug Auto tags
-    #      debug:
-    #        msg: "{{ item['name'] }}"
-    #      loop: "{{ cluster_info['clusters'][vcenter_cluster_name]['hosts'] }}"
-    #      when: item.name == "{{vcenter_cluster_name}}"
-    #      register: tagExists
-
-
-    - debug:
-        var: "{{ first_host }}"
-    - debug:
-        msg: "{{ first_host }}"
-
     - name: Mount VMFS datastores to ESXi
       community.vmware.vmware_host_datastore:
         hostname: '{{ vcenter_hostname }}'
