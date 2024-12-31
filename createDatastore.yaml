@@ -50,6 +50,5 @@
         validate_certs: false
         state: present
       loop: "{{cluster_info['clusters'][vcenter_cluster_name]['hosts']}}"
-      no_log: true
       ignore_errors: true
 
