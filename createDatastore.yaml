@@ -37,7 +37,6 @@
     - debug:
         msg: "{{ first_host }}"
 
-
     - name: Mount VMFS datastores to ESXi
       community.vmware.vmware_host_datastore:
         hostname: '{{ vcenter_hostname }}'
@@ -49,4 +48,4 @@
         vmfs_version: 6
         esxi_hostname: '{{ first_esxi_host }}'
         validate_certs: false
-      state: present
+        state: present
