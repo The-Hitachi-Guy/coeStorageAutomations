@@ -1,0 +1,24 @@
+
+- name: Clone VM to ESXi
+  hosts: localhost
+  collections:
+    - community.vmware
+  tasks:
+    - name: Instant Clone a VM
+      community.vmware.vmware_guest_instant_clone:
+        hostname: "{{ vcenter_hostname }}"
+        username: "{{ vcenter_username }}"
+        password: "{{ vcenter_password }}"
+        validate_certs: false
+        datastore: "{{ te_username }}"
+        datacenter: "ECoE-DataCenter"
+        host: "{{ host_group_name }}"
+        name: "{{ te_username }}"
+        parent_vm: "Te-Desktop-VM"
+        resource_pool: "William"
+        state: powered-on
+      register: vm_clone
+      delegate_to: localhost
+
+    - debug:
+        var: vm_clone
