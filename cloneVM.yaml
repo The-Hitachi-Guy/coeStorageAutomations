@@ -17,7 +17,6 @@
         name: "{{ te_username }}"
         parent_vm: "Te-Desktop-VM"
         resource_pool: "{{vcenter_resource_pool}}"
-        state: powered-on
       register: vm_clone
       delegate_to: localhost
 
