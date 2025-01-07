@@ -12,6 +12,7 @@
         validate_certs: false
         datastore: "{{ te_username }}"
         datacenter: "{{vcenter_datacenter}}"
+        folder: "TE VMs"
         host: "{{ vcenter_esxi_host }}"
         name: "{{ te_username }}"
         parent_vm: "Te-Desktop-VM"
