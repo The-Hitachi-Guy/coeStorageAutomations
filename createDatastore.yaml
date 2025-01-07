@@ -25,7 +25,7 @@
         hostname: '{{ vcenter_hostname }}'
         username: '{{ vcenter_username }}'
         password: '{{ vcenter_password }}'
-        datastore_name: '{{ vcenter_datastore_name }}'
+        datastore_name: '{{ te_username }}'
         datastore_type: 'vmfs'
         vmfs_device_name: '{{vcenter_datastore_naa}}'
         vmfs_version: 6
