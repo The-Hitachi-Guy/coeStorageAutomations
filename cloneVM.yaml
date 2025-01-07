@@ -11,11 +11,11 @@
         password: "{{ vcenter_password }}"
         validate_certs: false
         datastore: "{{ te_username }}"
-        datacenter: "ECoE-DataCenter"
-        host: "{{ host_group_name }}"
+        datacenter: "{{vcenter_datacenter}}"
+        host: "{{ vcenter_esxi_host }}"
         name: "{{ te_username }}"
         parent_vm: "Te-Desktop-VM"
-        resource_pool: "William"
+        resource_pool: "{{vcenter_resource_pool}}"
         state: powered-on
       register: vm_clone
       delegate_to: localhost
